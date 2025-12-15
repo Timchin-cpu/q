@@ -1,0 +1,128 @@
+.card {
+  background: #ffffff;
+  border-radius: 32px 32px 0 0;
+  padding: 24px 20px 32px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
+  position: relative;
+  min-height: 55vh;
+}
+.headerButton {
+  border-radius: 10px;
+  padding: 10px;
+  background: rgb(241, 239, 239);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.headerButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+.cardImage {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  object-fit: contain;
+  pointer-events: none;
+  top: -173px;
+  width: 125px;
+  height: auto;
+}
+.productName {
+  /* padding-top: 19%; */
+  font-size: 20px;
+}
+.weights {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.weight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgb(245, 242, 242);
+  width: 30%;
+  height: 50px;
+  font-weight: 600;
+}
+.addButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10%;
+}
+
+.addButtonLike {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 8px;
+
+  background-color: white;
+}
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 54vh;
+}
+/* Добавь к существующим стилям */
+
+.quantityContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 70%;
+  height: 6.5vh;
+  background: white;
+}
+
+.quantityButton {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.2s;
+  flex: 1;
+}
+
+.quantity {
+  font-weight: 600;
+  font-size: 16px;
+  min-width: 24px;
+  text-align: center;
+  color: black;
+}
+
+/* Обнови addButton для единообразия */
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 70%;
+  color: white;
+  background-color: black;
+  height: 6.5vh;
+  cursor: pointer;
+}
