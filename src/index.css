@@ -38,8 +38,15 @@ body {
   place-items: center !important;
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #ffffff, rgba(128, 128, 128, 0.02)) !important;
+  
+  /* Адаптивный градиент под тему Telegram */
+  background: linear-gradient(
+    to bottom, 
+    var(--tg-theme-bg-color, #ffffff), 
+    color-mix(in srgb, var(--tg-theme-bg-color, #ffffff) 98%, rgba(128, 128, 128, 0.02))
+  ) !important;
 }
+
 
 h1 {
   font-size: 3.2em;
