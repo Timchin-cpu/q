@@ -33,7 +33,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  place-items: center !important;
   min-width: 320px;
   min-height: 100vh;
   background: linear-gradient(to bottom, #ffffff, rgba(128, 128, 128, 0.12));
