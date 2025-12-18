@@ -135,14 +135,14 @@ function ProductPage({ products }) {
                   className={styles.quantityButton}
                   onClick={handleDecrement}
                 >
-                  <Minus size={18} />
+                  <Minus size={18} fill='black'/>
                 </button>
                 <span className={styles.quantity}>{currentQuantity}</span>
                 <button
                   className={styles.quantityButton}
                   onClick={handleIncrement}
                 >
-                  <Plus size={18} />
+                  <Plus size={18} fill='black'/>
                 </button>
               </div>
             ) : (
@@ -157,3 +157,4 @@ function ProductPage({ products }) {
   );
 }
 export default ProductPage;
+
