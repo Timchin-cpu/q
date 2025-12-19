@@ -196,6 +196,7 @@ const categories = [
   },
 ];
 function App() {
+  const carouselRef = useRef(null); // ref для карусели
 
   const { cartItems } = useCart();
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
