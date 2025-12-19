@@ -216,9 +216,10 @@ const handleMainScroll = useCallback(() => {
   if (carouselRef.current) {
     const el = carouselRef.current;
     const scrolled = el.scrollLeft > 0;
-    const lastElementFullyVisible = el.scrollLeft + el.clientWidth >= el.scrollWidth;
+    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 70);
     
-    setIsScrolledMain(scrolled);                    // margin-left при любом скролле
+    setIsScrolledMain(scrolled);                    // margin-left ВСЕГДА при скролле
+    setHasMarginRightMain(scrolled && !nearEnd);    // margin-right ТОЛЬКО не в конце
   }
 }, []);
 
@@ -226,10 +227,10 @@ const handleMinScroll = useCallback(() => {
   if (carouselMinRef.current) {
     const el = carouselMinRef.current;
     const scrolled = el.scrollLeft > 0;
-    // margin-right снимается КОГДА последний элемент ПОЛНОСТЬЮ виден
-    const lastElementFullyVisible = el.scrollLeft + el.clientWidth >= el.scrollWidth;
+    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 70);
     
-    setIsScrolledMin(scrolled && !lastElementFullyVisible); // комбинируем в одно состояние
+    setIsScrolledMin(scrolled);                     // margin-left ВСЕГДА при скролле
+    setHasMarginRightMin(scrolled && !nearEnd);     // margin-right ТОЛЬКО не в конце
   }
 }, []);
 
