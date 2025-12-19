@@ -202,25 +202,39 @@ function App() {
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false); // новое состояние
-
+  const carouselMinRef = useRef(null);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   const navigate = useNavigate();
-    const handleScroll = useCallback(() => {
-    if (carouselRef.current) {
-      const scrolled = carouselRef.current.scrollLeft > 0;
-      setIsScrolled(scrolled);
+ const handleScroll = useCallback(() => {
+    if (carouselRef.current && carouselRef.current.scrollLeft > 0) {
+      setIsScrolled(true);
+      return;
     }
+    if (carouselMinRef.current && carouselMinRef.current.scrollLeft > 0) {
+      setIsScrolled(true);
+      return;
+    }
+    setIsScrolled(false);
   }, []);
 
   useEffect(() => {
     const carousel = carouselRef.current;
+    const carouselMin = carouselMinRef.current;
+    
     if (carousel) {
       carousel.addEventListener('scroll', handleScroll, { passive: true });
-      return () => carousel.removeEventListener('scroll', handleScroll);
     }
+    if (carouselMin) {
+      carouselMin.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      if (carousel) carousel.removeEventListener('scroll', handleScroll);
+      if (carouselMin) carouselMin.removeEventListener('scroll', handleScroll);
+    };
   }, [handleScroll]);
   return (
     <div style={{ width: "87%" }} className={styles.app}>
@@ -279,8 +293,10 @@ function App() {
         ))}
       </div>
       <h2>Special price</h2>
-      <div className={styles.productsCarouselMin}>
-        {productsMin.map((product) => (
+<div 
+        ref={carouselMinRef}
+        className={`${styles.productsCarouselMin} ${isScrolled ? styles.scrolledMin : ''}`}
+      >        {productsMin.map((product) => (
           <div
             key={product.id}
             onClick={() => navigate(`/productmin/${product.id}`)}

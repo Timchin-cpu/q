@@ -211,7 +211,11 @@ h2 {
   gap: 10px;
   padding: 17px 0;
   scrollbar-width: none; /* Firefox */
-  min-width: 93.5vw;
+  min-width: 93.5vw;  transition: margin-left 0.3s ease;
+
+}
+.productsCarouselMin.scrolledMin {
+  margin-left: -20% !important;
 }
 .productsCarouselMin::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
