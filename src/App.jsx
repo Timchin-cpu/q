@@ -196,32 +196,52 @@ const categories = [
   },
 ];
 function App() {
-  const carouselRef = useRef(null); // ref для карусели
 
   const { cartItems } = useCart();
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false); // новое состояние
+ const [isScrolledMain, setIsScrolledMain] = useState(false); // для основной карусели
+  const [isScrolledMin, setIsScrolledMin] = useState(false);  // для мини карусели
+  const carouselRef = useRef(null);      // ref для основной карусели
+  const carouselMinRef = useRef(null);   // ref для мини карусели
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   const navigate = useNavigate();
-    const handleScroll = useCallback(() => {
+   const handleMainScroll = useCallback(() => {
     if (carouselRef.current) {
       const scrolled = carouselRef.current.scrollLeft > 0;
-      setIsScrolled(scrolled);
+      setIsScrolledMain(scrolled);
+    }
+  }, []);
+
+  // обработчик для мини карусели
+  const handleMinScroll = useCallback(() => {
+    if (carouselMinRef.current) {
+      const scrolled = carouselMinRef.current.scrollLeft > 0;
+      setIsScrolledMin(scrolled);
     }
   }, []);
 
   useEffect(() => {
     const carousel = carouselRef.current;
+    const carouselMin = carouselMinRef.current;
+    
     if (carousel) {
-      carousel.addEventListener('scroll', handleScroll, { passive: true });
-      return () => carousel.removeEventListener('scroll', handleScroll);
+      carousel.addEventListener('scroll', handleMainScroll, { passive: true });
     }
-  }, [handleScroll]);
+    if (carouselMin) {
+      carouselMin.addEventListener('scroll', handleMinScroll, { passive: true });
+    }
+
+    return () => {
+      if (carousel) carousel.removeEventListener('scroll', handleMainScroll);
+      if (carouselMin) carouselMin.removeEventListener('scroll', handleMinScroll);
+    };
+  }, [handleMainScroll, handleMinScroll]);
+
   return (
     <div style={{ width: "87%" }} className={styles.app}>
       {" "}
@@ -249,7 +269,7 @@ function App() {
       </div>
 <div 
         ref={carouselRef}
-        className={`${styles.productsCarousel} ${isScrolled ? styles.scrolled : ''}`}
+        className={`${styles.productsCarousel} ${isScrolledMain ? styles.scrolled : ''}`}
       >        {products.map((product) => (
           <div
             key={product.id}
@@ -279,8 +299,10 @@ function App() {
         ))}
       </div>
       <h2>Special price</h2>
-      <div className={styles.productsCarouselMin}>
-        {productsMin.map((product) => (
+<div 
+        ref={carouselMinRef}
+        className={`${styles.productsCarouselMin} ${isScrolledMin ? styles.scrolledMin : ''}`}
+      >        {productsMin.map((product) => (
           <div
             key={product.id}
             onClick={() => navigate(`/productmin/${product.id}`)}
