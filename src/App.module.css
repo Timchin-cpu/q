@@ -26,9 +26,9 @@ body {
 }
 
 .productsCarousel.scrolled {
-  margin-left: -20% !important; /* сразу при скролле */
+  margin-left: -20% !important;
+  margin-right: -20% !important; /* добавляется при скролле, кроме конца */
 }
-
 .productsCarousel::-webkit-scrollbar {
   display: none;
 }
@@ -107,8 +107,9 @@ input {
   overflow-x: auto;
   gap: 20px;
   padding: 20px 0;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
   min-width: 93.5vw;
+  transition: margin-left 0.08s ease-out, margin-right 0.08s ease-out;
 }
 .productsCarousel::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
@@ -223,13 +224,12 @@ h2 {
   padding: 17px 0;
   scrollbar-width: none;
   min-width: 93.5vw;
-  transition: margin-left 0.3s ease; /* плавный переход */
+  transition: margin-left 0.08s ease-out, margin-right 0.08s ease-out;
 }
-
 .productsCarouselMin.scrolledMin {
-  margin-left: -20% !important; /* сместится при скролле */
+  margin-left: -20% !important;
+  margin-right: -20% !important; /* добавляется при скролле, кроме конца */
 }
-
 .productsCarouselMin::-webkit-scrollbar {
   display: none;
 }

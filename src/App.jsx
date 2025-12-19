@@ -210,20 +210,28 @@ function App() {
   };
 
   const navigate = useNavigate();
-   const handleMainScroll = useCallback(() => {
-    if (carouselRef.current) {
-      const scrolled = carouselRef.current.scrollLeft > 0;
-      setIsScrolledMain(scrolled);
-    }
-  }, []);
+const handleMainScroll = useCallback(() => {
+  if (carouselRef.current) {
+    const el = carouselRef.current;
+    const scrolled = el.scrollLeft > 0;
+    const atEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 1);
+    
+    // margin-right ТОЛЬКО если не в конце
+    setIsScrolledMain(scrolled && !atEnd);
+  }
+}, []);
 
-  // обработчик для мини карусели
-  const handleMinScroll = useCallback(() => {
-    if (carouselMinRef.current) {
-      const scrolled = carouselMinRef.current.scrollLeft > 0;
-      setIsScrolledMin(scrolled);
-    }
-  }, []);
+// для мини карусели  
+const handleMinScroll = useCallback(() => {
+  if (carouselMinRef.current) {
+    const el = carouselMinRef.current;
+    const scrolled = el.scrollLeft > 0;
+    const atEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 1);
+    
+    // margin-right ТОЛЬКО если не в конце
+    setIsScrolledMin(scrolled && !atEnd);
+  }
+}, []);
 
   useEffect(() => {
     const carousel = carouselRef.current;
