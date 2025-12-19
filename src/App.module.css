@@ -4,31 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
-* {
-  box-sizing: border-box;
-}
 
-html, body, #root {
-  margin: 0 !important;
-  padding: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-body {
-  overflow-x: hidden !important;
-  position: relative;
-  left: 0 !important;
-}
-
-/* Принудительно для Telegram Desktop */
-@media (min-width: 1024px) {
-  #root {
-    width: 100vw !important;
-    margin-left: 0 !important;
-    padding-left: 0 !important;
-  }
-}
 body {
   margin: 0;
   display: block;
