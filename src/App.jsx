@@ -200,8 +200,10 @@ function App() {
   const { cartItems } = useCart();
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
- const [isScrolledMain, setIsScrolledMain] = useState(false); // для основной карусели
-  const [isScrolledMin, setIsScrolledMin] = useState(false);  // для мини карусели
+const [isScrolledMain, setIsScrolledMain] = useState(false);     // для margin-left
+const [hasMarginRightMain, setHasMarginRightMain] = useState(false); // для margin-right
+const [isScrolledMin, setIsScrolledMin] = useState(false);       // для margin-left мини
+const [hasMarginRightMin, setHasMarginRightMin] = useState(false);  // для m
   const carouselRef = useRef(null);      // ref для основной карусели
   const carouselMinRef = useRef(null);   // ref для мини карусели
 
@@ -214,20 +216,21 @@ const handleMainScroll = useCallback(() => {
   if (carouselRef.current) {
     const el = carouselRef.current;
     const scrolled = el.scrollLeft > 0;
-    // отступ 15px ПЕРЕД концом карусели
-    const atEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 15);
-    setIsScrolledMain(scrolled && !atEnd);
+    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 15);
+    
+    setIsScrolledMain(scrolled);                    // margin-left ВСЕГДА при скролле
+    setHasMarginRightMain(scrolled && !nearEnd);    // margin-right ТОЛЬКО не в конце
   }
 }, []);
 
-// для мини карусели
 const handleMinScroll = useCallback(() => {
   if (carouselMinRef.current) {
     const el = carouselMinRef.current;
     const scrolled = el.scrollLeft > 0;
-    // отступ 15px ПЕРЕД концом карусели
-    const atEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 15);
-    setIsScrolledMin(scrolled && !atEnd);
+    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 15);
+    
+    setIsScrolledMin(scrolled);                     // margin-left ВСЕГДА при скролле
+    setHasMarginRightMin(scrolled && !nearEnd);     // margin-right ТОЛЬКО не в конце
   }
 }, []);
 
@@ -274,9 +277,11 @@ const handleMinScroll = useCallback(() => {
         <input type="text" />
       </div>
 <div 
-        ref={carouselRef}
-        className={`${styles.productsCarousel} ${isScrolledMain ? styles.scrolled : ''}`}
-      >        {products.map((product) => (
+  ref={carouselRef}
+  className={`${styles.productsCarousel} 
+             ${isScrolledMain ? styles.scrolledLeft : ''} 
+             ${hasMarginRightMain ? styles.scrolledRight : ''}`}
+>        {products.map((product) => (
           <div
             key={product.id}
             className={styles.productCard}
@@ -306,9 +311,11 @@ const handleMinScroll = useCallback(() => {
       </div>
       <h2>Special price</h2>
 <div 
-        ref={carouselMinRef}
-        className={`${styles.productsCarouselMin} ${isScrolledMin ? styles.scrolledMin : ''}`}
-      >        {productsMin.map((product) => (
+  ref={carouselMinRef}
+  className={`${styles.productsCarouselMin} 
+             ${isScrolledMin ? styles.scrolledLeftMin : ''} 
+             ${hasMarginRightMin ? styles.scrolledRightMin : ''}`}
+>        {productsMin.map((product) => (
           <div
             key={product.id}
             onClick={() => navigate(`/productmin/${product.id}`)}

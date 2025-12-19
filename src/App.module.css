@@ -353,3 +353,17 @@ h2 {
   top: 18px;
   right: 18px;
 }
+.productsCarousel.scrolledLeft {
+  margin-left: -20% !important;
+}
+.productsCarousel.scrolledRight {
+  margin-right: -20% !important;
+}
+
+/* МИНИ КАРУСЕЛЬ */
+.productsCarouselMin.scrolledLeftMin {
+  margin-left: -20% !important;
+}
+.productsCarouselMin.scrolledRightMin {
+  margin-right: -20% !important;
+}
