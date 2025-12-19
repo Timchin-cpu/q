@@ -196,6 +196,7 @@ const categories = [
   },
 ];
 function App() {
+
   const { cartItems } = useCart();
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -203,7 +204,15 @@ function App() {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
   const navigate = useNavigate();
+    useEffect(() => {
+    if (window.Telegram?.WebApp) {
+      const tg = window.Telegram.WebApp;
+      tg.ready();     // Сообщает Telegram, что app готово
+      tg.expand();    // Расширяет на полный экран
+    }
+  }, []);
   return (
     <div style={{ width: "89%" }} className={styles.app}>
       {" "}
