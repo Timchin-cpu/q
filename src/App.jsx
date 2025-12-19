@@ -206,7 +206,20 @@ function App() {
   };
 
   const navigate = useNavigate();
-  
+    const handleScroll = useCallback(() => {
+    if (carouselRef.current) {
+      const scrolled = carouselRef.current.scrollLeft > 0;
+      setIsScrolled(scrolled);
+    }
+  }, []);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (carousel) {
+      carousel.addEventListener('scroll', handleScroll, { passive: true });
+      return () => carousel.removeEventListener('scroll', handleScroll);
+    }
+  }, [handleScroll]);
   return (
     <div style={{ width: "87%" }} className={styles.app}>
       {" "}
@@ -232,8 +245,10 @@ function App() {
         />
         <input type="text" />
       </div>
-      <div className={styles.productsCarousel}>
-        {products.map((product) => (
+<div 
+        ref={carouselRef}
+        className={`${styles.productsCarousel} ${isScrolled ? styles.scrolled : ''}`}
+      >        {products.map((product) => (
           <div
             key={product.id}
             className={styles.productCard}
