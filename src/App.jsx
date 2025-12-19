@@ -201,6 +201,7 @@ function App() {
   const { cartItems } = useCart();
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false); // новое состояние
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
