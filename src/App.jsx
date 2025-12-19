@@ -216,7 +216,7 @@ const handleMainScroll = useCallback(() => {
   if (carouselRef.current) {
     const el = carouselRef.current;
     const scrolled = el.scrollLeft > 0;
-    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 5);
+    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 0);
     
     setIsScrolledMain(scrolled);                    // margin-left ВСЕГДА при скролле
     setHasMarginRightMain(scrolled && !nearEnd);    // margin-right ТОЛЬКО не в конце
