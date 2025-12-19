@@ -216,7 +216,6 @@ const handleMainScroll = useCallback(() => {
   if (carouselRef.current) {
     const el = carouselRef.current;
     const scrolled = el.scrollLeft > 0;
-    // margin-right снимается КОГДА последний элемент ПОЛНОСТЬЮ виден
     const lastElementFullyVisible = el.scrollLeft + el.clientWidth >= el.scrollWidth;
     
     setIsScrolledMain(scrolled);                    // margin-left при любом скролле
