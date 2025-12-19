@@ -7,20 +7,26 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow: hidden !important;  /* Убирает ВСЕ скроллбары */
-  scrollbar-width: none;       /* Firefox */
-  -ms-overflow-style: none;    /* IE/Edge */
+  overflow-x: hidden;  /* Только ГРИЗОНТАЛЬНЫЙ скролл скрыть */
+  overflow-y: auto;    /* Вертикальный скролл оставить */
 }
 
 body::-webkit-scrollbar {
-  display: none;  /* Chrome/Safari */
+  width: 0;  /* Скрыть ширину скроллбара в Chrome */
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: transparent;  /* Полоска прозрачная */
 }
 
 #root {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;  /* Контейнер тоже */
+  overflow-y: auto;
 }
+
 body {
   margin: 0;
   display: block;
