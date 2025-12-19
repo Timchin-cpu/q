@@ -14,6 +14,7 @@ body {
   min-height: 100vh;
   color:#213547!important;
 }
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -88,12 +89,19 @@ input {
   overflow-x: auto;
   gap: 20px;
   padding: 20px 0;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
   min-width: 93.5vw;
+  transition: margin-left 0.3s ease; /* плавный переход */
 }
+
+.productsCarousel.scrolled {
+  margin-left: -20% !important; /* сразу при скролле */
+}
+
 .productsCarousel::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
 }
+
 
 /* сама карточка */
 .productCard {
