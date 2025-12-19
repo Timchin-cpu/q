@@ -284,7 +284,7 @@ function App() {
               <p className={styles.productDescription}>{product.description}</p>
 
               <p className={styles.productPrice}>${product.price}</p>
-              {/* <div className={styles.productItems}> */}
+              {/* <div classNamюбьe={styles.productItems}> */}
               <p className={styles.productWeight}>{product.weight}</p>
               <ShoppingCart size={15} className={styles.cartTop} />
               {/* </div> */}
