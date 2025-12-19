@@ -22,7 +22,7 @@ body {
   padding: 20px 0;
   scrollbar-width: none;
   min-width: 93.5vw;
-  transition: margin-left 0.78s ease-out; /* очень быстрый + ease-out */
+  transition: margin-left 0.3s ease; /* плавный переход */
 }
 
 .productsCarousel.scrolled {
@@ -223,7 +223,7 @@ h2 {
   padding: 17px 0;
   scrollbar-width: none;
   min-width: 93.5vw;
-  transition: margin-left 0.78s ease; /* плавныйопаора переход */
+  transition: margin-left 0.3s ease; /* плавный переход */
 }
 
 .productsCarouselMin.scrolledMin {
