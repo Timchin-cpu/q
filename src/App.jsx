@@ -206,13 +206,7 @@ function App() {
   };
 
   const navigate = useNavigate();
-    useEffect(() => {
-    if (window.Telegram?.WebApp) {
-      const tg = window.Telegram.WebApp;
-      tg.ready();     // Сообщает Telegram, что app готово
-      tg.expand();    // Расширяет на полный экран
-    }
-  }, []);
+  
   return (
     <div style={{ width: "89%" }} className={styles.app}>
       {" "}

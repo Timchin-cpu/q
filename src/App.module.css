@@ -4,7 +4,23 @@
   padding: 2rem;
   text-align: center;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden !important;  /* Убирает ВСЕ скроллбары */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
+}
 
+body::-webkit-scrollbar {
+  display: none;  /* Chrome/Safari */
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 body {
   margin: 0;
   display: block;
