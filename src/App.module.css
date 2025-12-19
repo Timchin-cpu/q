@@ -89,19 +89,12 @@ input {
   overflow-x: auto;
   gap: 20px;
   padding: 20px 0;
-  scrollbar-width: none;
+  scrollbar-width: none; /* Firefox */
   min-width: 93.5vw;
-  transition: margin-left 0.3s ease; /* плавный переход */
 }
-
-.productsCarousel.scrolled {
-  margin-left: -20% !important; /* сразу при скролле */
-}
-
 .productsCarousel::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome, Safari, Edge */
 }
-
 
 /* сама карточка */
 .productCard {
@@ -211,11 +204,7 @@ h2 {
   gap: 10px;
   padding: 17px 0;
   scrollbar-width: none; /* Firefox */
-  min-width: 93.5vw;  transition: margin-left 0.3s ease;
-
-}
-.productsCarouselMin.scrolledMin {
-  margin-left: -20% !important;
+  min-width: 93.5vw;
 }
 .productsCarouselMin::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
