@@ -4,29 +4,31 @@
   padding: 2rem;
   text-align: center;
 }
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;  /* Только ГРИЗОНТАЛЬНЫЙ скролл скрыть */
-  overflow-y: auto;    /* Вертикальный скролл оставить */
+* {
+  box-sizing: border-box;
 }
 
-body::-webkit-scrollbar {
-  width: 0;  /* Скрыть ширину скроллбара в Chrome */
-  background: transparent;
+html, body, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-body::-webkit-scrollbar-thumb {
-  background: transparent;  /* Полоска прозрачная */
+body {
+  overflow-x: hidden !important;
+  position: relative;
+  left: 0 !important;
 }
 
-#root {
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;  /* Контейнер тоже */
-  overflow-y: auto;
+/* Принудительно для Telegram Desktop */
+@media (min-width: 1024px) {
+  #root {
+    width: 100vw !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
 }
-
 body {
   margin: 0;
   display: block;
