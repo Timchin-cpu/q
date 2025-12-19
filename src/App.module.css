@@ -4,7 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
-
+html{
+  scrollbar-width: none;
+}
 body {
   margin: 0;
   display: block;

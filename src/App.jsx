@@ -208,7 +208,7 @@ function App() {
   const navigate = useNavigate();
   
   return (
-    <div style={{ width: "89%" }} className={styles.app}>
+    <div style={{ width: "87%" }} className={styles.app}>
       {" "}
       <div className={styles.header}>
         <div className={styles.buttonBar} onClick={toggleSidebar}>
