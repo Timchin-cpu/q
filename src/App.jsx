@@ -219,7 +219,6 @@ const handleMainScroll = useCallback(() => {
     const lastElementFullyVisible = el.scrollLeft + el.clientWidth >= el.scrollWidth;
     
     setIsScrolledMain(scrolled);                    // margin-left при любом скролле
-    // используй второе состояние если добавил, или замени логику
   }
 }, []);
 
