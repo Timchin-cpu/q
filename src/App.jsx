@@ -214,21 +214,19 @@ const handleMainScroll = useCallback(() => {
   if (carouselRef.current) {
     const el = carouselRef.current;
     const scrolled = el.scrollLeft > 0;
-    const atEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 1);
-    
-    // margin-right ТОЛЬКО если не в конце
+    // отступ 15px ПЕРЕД концом карусели
+    const atEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 15);
     setIsScrolledMain(scrolled && !atEnd);
   }
 }, []);
 
-// для мини карусели  
+// для мини карусели
 const handleMinScroll = useCallback(() => {
   if (carouselMinRef.current) {
     const el = carouselMinRef.current;
     const scrolled = el.scrollLeft > 0;
-    const atEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 1);
-    
-    // margin-right ТОЛЬКО если не в конце
+    // отступ 15px ПЕРЕД концом карусели
+    const atEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 15);
     setIsScrolledMin(scrolled && !atEnd);
   }
 }, []);
