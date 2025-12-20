@@ -216,10 +216,10 @@ const handleMainScroll = useCallback(() => {
   if (carouselRef.current) {
     const el = carouselRef.current;
     const scrolled = el.scrollLeft > 0;
-    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 10);
+    // const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 10);
     
     setIsScrolledMain(scrolled);                    // margin-left ВСЕГДА при скролле
-    setHasMarginRightMain(scrolled && !nearEnd);    // margin-right ТОЛЬКО не в конце
+    // setHasMarginRightMain(scrolled && !nearEnd);    // margin-right ТОЛЬКО не в конце
   }
 }, []);
 
@@ -227,10 +227,10 @@ const handleMinScroll = useCallback(() => {
   if (carouselMinRef.current) {
     const el = carouselMinRef.current;
     const scrolled = el.scrollLeft > 0;
-    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 10);
+    // const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 670);
     
     setIsScrolledMin(scrolled);                     // margin-left ВСЕГДА при скролле
-    setHasMarginRightMin(scrolled && !nearEnd);     // margin-right ТОЛЬКО не в конце
+    // setHasMarginRightMin(scrolled && !nearEnd);     // margin-right ТОЛЬКО не в конце
   }
 }, []);
 
