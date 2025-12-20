@@ -19,7 +19,7 @@ body {
 
 .productsCarousel.scrolled {
   margin-left: -20% !important;
-  margin-right: -20% !important; /* добавляется при скролле, кроме конца */
+  margin-right: -25px !important; /* добавляется при скролле, кроме конца */
 }
 .productsCarousel::-webkit-scrollbar {
   display: none;
@@ -228,7 +228,7 @@ h2 {
 }
 .productsCarouselMin.scrolledMin {
   margin-left: -20% !important;
-  margin-right: -20% !important; /* добавляется при скролле, кроме конца */
+  margin-right: -25px !important; /* добавляется при скролле, кроме конца */
 }
 .productsCarouselMin::-webkit-scrollbar {
   display: none;
@@ -357,7 +357,7 @@ h2 {
   margin-left: -20% !important;
 }
 .productsCarousel.scrolledRight {
-  margin-right: -20% !important;
+  margin-right: -25px !important;
 }
 
 /* МИНИ КАРУСЕЛЬ */
@@ -365,5 +365,5 @@ h2 {
   margin-left: -20% !important;
 }
 .productsCarouselMin.scrolledRightMin {
-  margin-right: -20% !important;
+  margin-right: -25px !important;
 }
