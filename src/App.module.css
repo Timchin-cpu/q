@@ -32,7 +32,7 @@ body {
 
 .productsCarousel.scrolled {
   margin-left: -20% !important;
-  margin-right: -20% !important; /* добавляется при скролле, кроме конца */
+  margin-right: 25px !important; /* добавляется при скролле, кроме конца */
 }
 .productsCarousel::-webkit-scrollbar {
   display: none;
