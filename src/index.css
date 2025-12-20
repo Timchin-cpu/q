@@ -17,10 +17,11 @@
 #root {
   width: 100%;
   margin: 0;
-    display: flex
-;
-    align-items: center;
-    justify-content: center;  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -38,15 +39,18 @@ body {
   place-items: center !important;
   min-width: 320px;
   min-height: 100vh;
-  
+
   /* Адаптивный градиент под тему Telegram */
   background: linear-gradient(
-    to bottom, 
-    var(--tg-theme-bg-color, #ffffff), 
-    color-mix(in srgb, var(--tg-theme-bg-color, #ffffff) 98%, rgba(128, 128, 128, 0.02))
+    to bottom,
+    var(--tg-theme-bg-color, #ffffff),
+    color-mix(
+      in srgb,
+      var(--tg-theme-bg-color, #ffffff) 98%,
+      rgba(128, 128, 128, 0.02)
+    )
   ) !important;
 }
-
 
 h1 {
   font-size: 3.2em;

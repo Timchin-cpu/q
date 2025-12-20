@@ -4,7 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
-html{
+html {
   scrollbar-width: none;
 }
 body {
@@ -12,10 +12,8 @@ body {
   display: block;
   min-width: 320px;
   min-height: 100vh;
-  color:#213547!important;
+  color: #213547 !important;
 }
-
-
 
 .productsCarousel.scrolled {
   margin-left: -20% !important;
@@ -101,10 +99,10 @@ input {
   min-width: 93.5vw;
   margin-left: 0;
   margin-right: 0;
-  transition: margin-left 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              margin-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: margin-left 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    margin-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   scroll-behavior: smooth; /* Добавьте для плавного скролла */
-  margin-right: -8% !important; 
+  margin-right: -8% !important;
 }
 
 .productsCarousel::-webkit-scrollbar {
@@ -222,10 +220,10 @@ h2 {
   min-width: 93.5vw;
   margin-left: 0;
   margin-right: 0;
-  transition: margin-left 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              margin-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: margin-left 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    margin-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   scroll-behavior: smooth;
-  margin-right: -8% !important; 
+  margin-right: -8% !important;
 }
 .productsCarouselMin.scrolledMin {
   margin-left: -20% !important;
@@ -357,7 +355,6 @@ h2 {
 .productsCarousel.scrolledLeft {
   margin-left: -20% !important;
 }
-
 
 /* МИНИ КАРУСЕЛЬ */
 .productsCarouselMin.scrolledLeftMin {

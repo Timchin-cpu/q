@@ -1,4 +1,4 @@
-import { useState, useEffect,useCallback,useRef} from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./App.module.css";
 import { useCart } from "./contexts/CartContext";
@@ -196,58 +196,60 @@ const categories = [
   },
 ];
 function App() {
-
   const { cartItems } = useCart();
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-const [isScrolledMain, setIsScrolledMain] = useState(false);     // для margin-left
-const [hasMarginRightMain, setHasMarginRightMain] = useState(false); // для margin-right
-const [isScrolledMin, setIsScrolledMin] = useState(false);       // для margin-left мини
-const [hasMarginRightMin, setHasMarginRightMin] = useState(false);  // для m
-  const carouselRef = useRef(null);      // ref для основной карусели
-  const carouselMinRef = useRef(null);   // ref для мини карусели
+  const [isScrolledMain, setIsScrolledMain] = useState(false); // для margin-left
+  const [hasMarginRightMain, setHasMarginRightMain] = useState(false); // для margin-right
+  const [isScrolledMin, setIsScrolledMin] = useState(false); // для margin-left мини
+  const [hasMarginRightMin, setHasMarginRightMin] = useState(false); // для m
+  const carouselRef = useRef(null); // ref для основной карусели
+  const carouselMinRef = useRef(null); // ref для мини карусели
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   const navigate = useNavigate();
-const handleMainScroll = useCallback(() => {
-  if (carouselRef.current) {
-    const el = carouselRef.current;
-    const scrolled = el.scrollLeft > 0;
-    // const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 10);
-    
-    setIsScrolledMain(scrolled);                    // margin-left ВСЕГДА при скролле
-    // setHasMarginRightMain(scrolled && !nearEnd);    // margin-right ТОЛЬКО не в конце
-  }
-}, []);
+  const handleMainScroll = useCallback(() => {
+    if (carouselRef.current) {
+      const el = carouselRef.current;
+      const scrolled = el.scrollLeft > 0;
+      // const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 10);
 
-const handleMinScroll = useCallback(() => {
-  if (carouselMinRef.current) {
-    const el = carouselMinRef.current;
-    const scrolled = el.scrollLeft > 0;
-    // const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 670);
-    
-    setIsScrolledMin(scrolled);                     // margin-left ВСЕГДА при скролле
-    // setHasMarginRightMin(scrolled && !nearEnd);     // margin-right ТОЛЬКО не в конце
-  }
-}, []);
+      setIsScrolledMain(scrolled); // margin-left ВСЕГДА при скролле
+      // setHasMarginRightMain(scrolled && !nearEnd);    // margin-right ТОЛЬКО не в конце
+    }
+  }, []);
+
+  const handleMinScroll = useCallback(() => {
+    if (carouselMinRef.current) {
+      const el = carouselMinRef.current;
+      const scrolled = el.scrollLeft > 0;
+      // const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 670);
+
+      setIsScrolledMin(scrolled); // margin-left ВСЕГДА при скролле
+      // setHasMarginRightMin(scrolled && !nearEnd);     // margin-right ТОЛЬКО не в конце
+    }
+  }, []);
 
   useEffect(() => {
     const carousel = carouselRef.current;
     const carouselMin = carouselMinRef.current;
-    
+
     if (carousel) {
-      carousel.addEventListener('scroll', handleMainScroll, { passive: true });
+      carousel.addEventListener("scroll", handleMainScroll, { passive: true });
     }
     if (carouselMin) {
-      carouselMin.addEventListener('scroll', handleMinScroll, { passive: true });
+      carouselMin.addEventListener("scroll", handleMinScroll, {
+        passive: true,
+      });
     }
 
     return () => {
-      if (carousel) carousel.removeEventListener('scroll', handleMainScroll);
-      if (carouselMin) carouselMin.removeEventListener('scroll', handleMinScroll);
+      if (carousel) carousel.removeEventListener("scroll", handleMainScroll);
+      if (carouselMin)
+        carouselMin.removeEventListener("scroll", handleMinScroll);
     };
   }, [handleMainScroll, handleMinScroll]);
 
@@ -276,12 +278,14 @@ const handleMinScroll = useCallback(() => {
         />
         <input type="text" />
       </div>
-<div 
-  ref={carouselRef}
-  className={`${styles.productsCarousel} 
-             ${isScrolledMain ? styles.scrolledLeft : ''} 
-             ${hasMarginRightMain ? styles.scrolledRight : ''}`}
->        {products.map((product) => (
+      <div
+        ref={carouselRef}
+        className={`${styles.productsCarousel} 
+             ${isScrolledMain ? styles.scrolledLeft : ""} 
+             ${hasMarginRightMain ? styles.scrolledRight : ""}`}
+      >
+        {" "}
+        {products.map((product) => (
           <div
             key={product.id}
             className={styles.productCard}
@@ -310,12 +314,14 @@ const handleMinScroll = useCallback(() => {
         ))}
       </div>
       <h2>Special price</h2>
-<div 
-  ref={carouselMinRef}
-  className={`${styles.productsCarouselMin} 
-             ${isScrolledMin ? styles.scrolledLeftMin : ''} 
-             ${hasMarginRightMin ? styles.scrolledRightMin : ''}`}
->        {productsMin.map((product) => (
+      <div
+        ref={carouselMinRef}
+        className={`${styles.productsCarouselMin} 
+             ${isScrolledMin ? styles.scrolledLeftMin : ""} 
+             ${hasMarginRightMin ? styles.scrolledRightMin : ""}`}
+      >
+        {" "}
+        {productsMin.map((product) => (
           <div
             key={product.id}
             onClick={() => navigate(`/productmin/${product.id}`)}
