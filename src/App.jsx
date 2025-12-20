@@ -196,43 +196,44 @@ const categories = [
   },
 ];
 function App() {
-
   const { cartItems } = useCart();
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-const [isScrolledMain, setIsScrolledMain] = useState(false);     // для margin-left
-const [hasMarginRightMain, setHasMarginRightMain] = useState(false); // для margin-right
-const [isScrolledMin, setIsScrolledMin] = useState(false);       // для margin-left мини
-const [hasMarginRightMin, setHasMarginRightMin] = useState(false);  // для m
-  const carouselRef = useRef(null);      // ref для основной карусели
-  const carouselMinRef = useRef(null);   // ref для мини карусели
+  const [isScrolledMain, setIsScrolledMain] = useState(false);
+  const [hasMarginRightMain, setHasMarginRightMain] = useState(false);
+  const [isScrolledMin, setIsScrolledMin] = useState(false);
+  const [hasMarginRightMin, setHasMarginRightMin] = useState(false);
+  
+  const carouselRef = useRef(null);
+  const carouselMinRef = useRef(null);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   const navigate = useNavigate();
-const handleMainScroll = useCallback(() => {
-  if (carouselRef.current) {
-    const el = carouselRef.current;
-    const scrolled = el.scrollLeft > 0;
-    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 10);
-    
-    setIsScrolledMain(scrolled);                    // margin-left ВСЕГДА при скролле
-    setHasMarginRightMain(scrolled && !nearEnd);    // margin-right ТОЛЬКО не в конце
-  }
-}, []);
 
-const handleMinScroll = useCallback(() => {
-  if (carouselMinRef.current) {
-    const el = carouselMinRef.current;
-    const scrolled = el.scrollLeft > 0;
-    const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 670);
-    
-    setIsScrolledMin(scrolled);                     // margin-left ВСЕГДА при скролле
-    setHasMarginRightMin(scrolled && !nearEnd);     // margin-right ТОЛЬКО не в конце
-  }
-}, []);
+  const handleMainScroll = useCallback(() => {
+    if (carouselRef.current) {
+      const el = carouselRef.current;
+      const scrolled = el.scrollLeft > 10; // Небольшой порог для избежания тряски
+      const nearEnd = el.scrollWidth - el.scrollLeft - el.clientWidth < 10;
+      
+      setIsScrolledMain(scrolled);
+      setHasMarginRightMain(scrolled && !nearEnd);
+    }
+  }, []);
+
+  const handleMinScroll = useCallback(() => {
+    if (carouselMinRef.current) {
+      const el = carouselMinRef.current;
+      const scrolled = el.scrollLeft > 10; // Небольшой порог
+      const nearEnd = el.scrollWidth - el.scrollLeft - el.clientWidth < 10;
+      
+      setIsScrolledMin(scrolled);
+      setHasMarginRightMin(scrolled && !nearEnd);
+    }
+  }, []);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -240,9 +241,12 @@ const handleMinScroll = useCallback(() => {
     
     if (carousel) {
       carousel.addEventListener('scroll', handleMainScroll, { passive: true });
+      // Вызываем один раз для начального состояния
+      handleMainScroll();
     }
     if (carouselMin) {
       carouselMin.addEventListener('scroll', handleMinScroll, { passive: true });
+      handleMinScroll();
     }
 
     return () => {
@@ -276,12 +280,13 @@ const handleMinScroll = useCallback(() => {
         />
         <input type="text" />
       </div>
-<div 
-  ref={carouselRef}
-  className={`${styles.productsCarousel} 
-             ${isScrolledMain ? styles.scrolledLeft : ''} 
-             ${hasMarginRightMain ? styles.scrolledRight : ''}`}
->        {products.map((product) => (
+      <div 
+        ref={carouselRef}
+        className={`${styles.productsCarousel} 
+                   ${isScrolledMain ? styles.scrolledLeft : ''} 
+                   ${hasMarginRightMain ? styles.scrolledRight : ''}`}
+      >
+        {products.map((product) => (
           <div
             key={product.id}
             className={styles.productCard}
@@ -295,10 +300,8 @@ const handleMinScroll = useCallback(() => {
               <p className={styles.productDescription}>{product.description}</p>
 
               <p className={styles.productPrice}>${product.price}</p>
-              {/* <div classNamюбьe={styles.productItems}> */}
               <p className={styles.productWeight}>{product.weight}</p>
               <ShoppingCart size={15} className={styles.cartTop} />
-              {/* </div> */}
             </div>
 
             <img
@@ -306,33 +309,6 @@ const handleMinScroll = useCallback(() => {
               alt={product.name}
               className={styles.productImage}
             />
-          </div>
-        ))}
-      </div>
-      <h2>Special price</h2>
-<div 
-  ref={carouselMinRef}
-  className={`${styles.productsCarouselMin} 
-             ${isScrolledMin ? styles.scrolledLeftMin : ''} 
-             ${hasMarginRightMin ? styles.scrolledRightMin : ''}`}
->        {productsMin.map((product) => (
-          <div
-            key={product.id}
-            onClick={() => navigate(`/productmin/${product.id}`)}
-            className={styles.productCardMin}
-          >
-            <div className={styles.productTextInfoMin}>
-              <h3 className={styles.productTitleMin}>{product.name}</h3>
-
-              <p>${product.price}</p>
-            </div>
-
-            <img
-              src={product.image}
-              alt={product.name}
-              className={styles.productImageMin}
-            />
-            <ShoppingCart size={15} className={styles.cart} color="white" />
           </div>
         ))}
       </div>
