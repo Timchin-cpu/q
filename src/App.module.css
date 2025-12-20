@@ -22,17 +22,12 @@ body {
   padding: 20px 0;
   scrollbar-width: none;
   min-width: 93.5vw;
-  margin-left: 0;
-  margin-right: 0;
-  transition: margin-left 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              margin-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  scroll-behavior: smooth; /* Добавьте для плавного скролла */
+  transition: margin-left 0.3s ease; /* плавный переход */
 }
-
 
 .productsCarousel.scrolled {
   margin-left: -20% !important;
-  margin-right: 25px !important; /* добавляется при скролле, кроме конца */
+  margin-right: -25px !important; /* добавляется при скролле, кроме конца */
 }
 .productsCarousel::-webkit-scrollbar {
   display: none;
@@ -105,7 +100,16 @@ input {
   background-color: rgb(245, 242, 242);
   outline: none;
 }
-
+.productsCarousel {
+  margin-top: 12px;
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+  scrollbar-width: none;
+  min-width: 93.5vw;
+  transition: margin-left 0.08s ease-out, margin-right 0.08s ease-out;
+}
 .productsCarousel::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
@@ -219,11 +223,7 @@ h2 {
   padding: 17px 0;
   scrollbar-width: none;
   min-width: 93.5vw;
-  margin-left: 0;
-  margin-right: 0;
-  transition: margin-left 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              margin-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  scroll-behavior: smooth;
+  transition: margin-left 0.08s ease-out, margin-right 0.08s ease-out;
 }
 .productsCarouselMin.scrolledMin {
   margin-left: -20% !important;
@@ -356,7 +356,7 @@ h2 {
   margin-left: -20% !important;
 }
 .productsCarousel.scrolledRight {
-  margin-right: -30px !important;
+  margin-right: -25px !important;
 }
 
 /* МИНИ КАРУСЕЛЬ */
@@ -364,5 +364,5 @@ h2 {
   margin-left: -20% !important;
 }
 .productsCarouselMin.scrolledRightMin {
-  margin-right: 30px !important;
+  margin-right: -20% !important;
 }
