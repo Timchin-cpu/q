@@ -228,10 +228,10 @@ function App() {
     if (carouselMinRef.current) {
       const el = carouselMinRef.current;
       const scrolled = el.scrollLeft > 10; // Небольшой порог
-      const nearEnd = el.scrollWidth - el.scrollLeft - el.clientWidth >10;
+      // const nearEnd = el.scrollWidth - el.scrollLeft - el.clientWidth >10;
       
       setIsScrolledMin(scrolled);
-      setHasMarginRightMin(scrolled && !nearEnd);
+      // setHasMarginRightMin(scrolled && !nearEnd);
     }
   }, []);
 
