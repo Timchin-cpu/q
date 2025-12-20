@@ -228,7 +228,7 @@ function App() {
     if (carouselMinRef.current) {
       const el = carouselMinRef.current;
       const scrolled = el.scrollLeft > 10; // Небольшой порог
-      const nearEnd = el.scrollWidth - el.scrollLeft - el.clientWidth < 50;
+      const nearEnd = el.scrollWidth - el.scrollLeft - el.clientWidth < 150;
       
       setIsScrolledMin(scrolled);
       setHasMarginRightMin(scrolled && !nearEnd);
