@@ -264,7 +264,7 @@ function App() {
         >
           <Menu size={17} />
         </div>
-        <div className={styles.buttonBar}>
+        <div className={styles.buttonBar} style={{ cursor: "pointer" }}>
           <ShoppingCart size={17} onClick={() => navigate("/cart")} />
           {cartCount > 0 && (
             <span className={styles.cartBadge}>{cartCount}</span>
@@ -296,6 +296,7 @@ function App() {
             onClick={() => navigate(`/product/${product.id}`)}
             style={{
               backgroundImage: `linear-gradient(150deg, ${product.gradientFrom}, ${product.gradientTo})`,
+              cursor: "pointer",
             }}
           >
             <div className={styles.productTextInfo}>
@@ -330,6 +331,7 @@ function App() {
             key={product.id}
             onClick={() => navigate(`/productmin/${product.id}`)}
             className={styles.productCardMin}
+            style={{ cursor: "pointer" }}
           >
             <div className={styles.productTextInfoMin}>
               <h3 className={styles.productTitleMin}>{product.name}</h3>
@@ -373,7 +375,7 @@ function App() {
             key={product.id}
             onClick={() => navigate(`/productmin/${product.id}`)}
             className={styles.productCardMin}
-            style={{ maxWidth: "119px", minWidth: "119px" }}
+            style={{ maxWidth: "119px", minWidth: "119px", cursor: "pointer" }}
           >
             <div className={styles.productTextInfoMin}>
               <h3 className={styles.productTitleMin}>{product.name}</h3>
@@ -399,7 +401,11 @@ function App() {
             minWidth: "198px",
           }}
         >
-          <div className={styles.panelClose} onClick={toggleSidebar}>
+          <div
+            className={styles.panelClose}
+            onClick={toggleSidebar}
+            style={{ cursor: "pointer" }}
+          >
             <PanelRightOpen size="25" />
           </div>
 
@@ -426,33 +432,34 @@ function App() {
             <div
               className={styles.infoButtonLI}
               onClick={() => navigate("/cart")}
+              style={{ cursor: "pointer" }}
             >
               <ShoppingCart />
               <p>My Cart</p>
             </div>
-            <div className={styles.infoButtonLI}>
+            <div className={styles.infoButtonLI} style={{ cursor: "pointer" }}>
               <Heart />
               <p>Wish List</p>
             </div>
-            <div className={styles.infoButtonLI}>
+            <div className={styles.infoButtonLI} style={{ cursor: "pointer" }}>
               <ListOrdered />
               <p>My Order</p>
             </div>
-            <div className={styles.infoButtonLI}>
+            <div className={styles.infoButtonLI} style={{ cursor: "pointer" }}>
               <Ticket />
               <p>Vouchar</p>
             </div>
-            <div className={styles.infoButtonLI}>
+            <div className={styles.infoButtonLI} style={{ cursor: "pointer" }}>
               <MessageCircleQuestionMark />
               <p>Help</p>
             </div>
-            <div className={styles.infoButtonLI}>
+            <div className={styles.infoButtonLI} style={{ cursor: "pointer" }}>
               <Settings />
               <p>Settings</p>
             </div>
           </div>
         </div>
-        <div className={styles.LogOut}>
+        <div className={styles.LogOut} style={{ cursor: "pointer" }}>
           <LogOut />
           <p>Sign Out </p>
         </div>

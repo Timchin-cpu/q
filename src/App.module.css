@@ -70,9 +70,6 @@ body {
   display: flex;
   justify-content: center;
 }
-.buttonBar:hover {
-  transition: 1.1;
-}
 
 h1 {
   margin: 0;
@@ -242,6 +239,7 @@ h2 {
   background: white;
   display: flex;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
 }
 .cartTop {
   position: absolute;
