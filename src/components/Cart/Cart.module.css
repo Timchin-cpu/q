@@ -31,7 +31,6 @@
   border: none;
   color: #666;
   font-size: 16px;
-  cursor: pointer;
   padding: 8px;
 }
 
@@ -60,7 +59,6 @@ button:focus {
   padding: 12px 32px;
   border-radius: 25px;
   font-size: 16px;
-  cursor: pointer;
   margin-top: 20px;
 }
 
@@ -144,11 +142,10 @@ button:focus {
 .quantityButton {
   background: none;
   border: none;
-  cursor: pointer;
   padding: 4px;
   border-radius: 50%;
   transition: background 0.2s;
-  color:black;
+  color: black;
 }
 
 .quantityButton:hover {
@@ -167,7 +164,6 @@ button:focus {
   background: none;
   border: none;
   color: #dc3545;
-  cursor: pointer;
   padding: 8px;
   border-radius: 8px;
   transition: background 0.2s;
@@ -200,7 +196,6 @@ button:focus {
   border-radius: 12px;
   font-size: 18px;
   font-weight: 600;
-  cursor: pointer;
   margin-bottom: 12px;
 }
 
@@ -211,11 +206,9 @@ button:focus {
   border: 1px solid #dee2e6;
   padding: 12px;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 14px;
 }
 
 .clearButton:hover {
   background: #e9ecef;
 }
-

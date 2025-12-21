@@ -280,7 +280,6 @@ h2 {
   z-index: 1000;
   background: none;
   border: none;
-  cursor: pointer;
   padding: 8px;
 }
 
@@ -320,7 +319,6 @@ h2 {
   background: none;
   border: none;
   font-size: 24px;
-  cursor: pointer;
 }
 .infoButton {
   display: flex;
