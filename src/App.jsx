@@ -4,7 +4,6 @@ import styles from "./App.module.css";
 import { useCart } from "./contexts/CartContext";
 
 import {
-  ArrowBigLeft,
   Bird,
   Cat,
   Circle,
@@ -15,16 +14,16 @@ import {
   ListOrdered,
   LogOut,
   Menu,
-  MessageCircleQuestionMark,
-  PanelRightOpen,
+  MessageCircleQuestion,
+  PanelRightClose,
   Rabbit,
   Search,
   Settings,
   ShoppingCart,
   Snail,
   Ticket,
-  UserRound,
 } from "lucide-react";
+
 const products = [
   {
     id: 1,
@@ -33,8 +32,8 @@ const products = [
     description: "Premium dry dog food for adult dogs of all breeds",
     weight: "3 kg",
     image: "/images/product1.png",
-    gradientFrom: "#e7ecb6ff", // цвет из пачки
-    gradientTo: "#6c9687ff ",
+    gradientFrom: "#e7ecb6ff",
+    gradientTo: "#6c9687ff",
   },
   {
     id: 2,
@@ -43,7 +42,7 @@ const products = [
     description: "Durable sisal rope cat scratching post with platforms",
     weight: "2.5 kg",
     image: "/images/product2.png",
-    gradientFrom: "#e7ecb6ff", // цвет из пачки
+    gradientFrom: "#e7ecb6ff",
     gradientTo: "#696063ff",
   },
   {
@@ -53,7 +52,7 @@ const products = [
     description: "Spacious multi-level hamster habitat with accessories",
     weight: "4 kg",
     image: "/images/product.png",
-    gradientFrom: "#e7ecb6ff", // цвет из пачки
+    gradientFrom: "#e7ecb6ff",
     gradientTo: "#d687ccff",
   },
   {
@@ -63,8 +62,8 @@ const products = [
     description: "Premium seed blend for small birds",
     weight: "1 kg",
     image: "/images/product1.png",
-    gradientFrom: "#e7ecb6ff", // цвет из пачки
-    gradientTo: "#6c9687ff ",
+    gradientFrom: "#e7ecb6ff",
+    gradientTo: "#6c9687ff",
   },
   {
     id: 5,
@@ -73,8 +72,8 @@ const products = [
     description: "Premium dry dog food for adult dogs of all breeds",
     weight: "3 kg",
     image: "/images/product1.png",
-    gradientFrom: "#e7ecb6ff", // цвет из пачки
-    gradientTo: "#6c9687ff ",
+    gradientFrom: "#e7ecb6ff",
+    gradientTo: "#6c9687ff",
   },
   {
     id: 6,
@@ -83,7 +82,7 @@ const products = [
     description: "Durable sisal rope cat scratching post with platforms",
     weight: "2.5 kg",
     image: "/images/product2.png",
-    gradientFrom: "#e7ecb6ff", // цвет из пачки
+    gradientFrom: "#e7ecb6ff",
     gradientTo: "#696063ff",
   },
   {
@@ -93,7 +92,7 @@ const products = [
     description: "Spacious multi-level hamster habitat with accessories",
     weight: "4 kg",
     image: "/images/product.png",
-    gradientFrom: "#e7ecb6ff", // цвет из пачки
+    gradientFrom: "#e7ecb6ff",
     gradientTo: "#d687ccff",
   },
   {
@@ -103,10 +102,11 @@ const products = [
     description: "Premium seed blend for small birds",
     weight: "1 kg",
     image: "/images/product1.png",
-    gradientFrom: "#e7ecb6ff", // цвет из пачки
-    gradientTo: "#6c9687ff ",
+    gradientFrom: "#e7ecb6ff",
+    gradientTo: "#6c9687ff",
   },
 ];
+
 const productsMin = [
   {
     id: 1,
@@ -173,63 +173,33 @@ const productsMin = [
     image: "/images/eda4.png",
   },
 ];
-const categories = [
-  {
-    id: 1,
-    name: "Dog",
-    image: "/images/dog.png",
-  },
-  {
-    id: 2,
-    name: "Cat",
-    image: "/images/cat.png",
-  },
-  {
-    id: 3,
-    name: "Rabbit",
-    image: "/images/rabbit.png",
-  },
-  {
-    id: 4,
-    name: "Fish",
-    image: "/images/fish.png",
-  },
-];
+
 function App() {
   const { cartItems } = useCart();
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isScrolledMain, setIsScrolledMain] = useState(false); // для margin-left
-  const [hasMarginRightMain, setHasMarginRightMain] = useState(false); // для margin-right
-  const [isScrolledMin, setIsScrolledMin] = useState(false); // для margin-left мини
-  const [hasMarginRightMin, setHasMarginRightMin] = useState(false); // для m
-  const carouselRef = useRef(null); // ref для основной карусели
-  const carouselMinRef = useRef(null); // ref для мини карусели
+  const [isScrolledMain, setIsScrolledMain] = useState(false);
+  const [isScrolledMin, setIsScrolledMin] = useState(false);
+  const carouselRef = useRef(null);
+  const carouselMinRef = useRef(null);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   const navigate = useNavigate();
+
   const handleMainScroll = useCallback(() => {
     if (carouselRef.current) {
-      const el = carouselRef.current;
-      const scrolled = el.scrollLeft > 0;
-      // const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 10);
-
-      setIsScrolledMain(scrolled); // margin-left ВСЕГДА при скролле
-      // setHasMarginRightMain(scrolled && !nearEnd);    // margin-right ТОЛЬКО не в конце
+      const scrolled = carouselRef.current.scrollLeft > 0;
+      setIsScrolledMain(scrolled);
     }
   }, []);
 
   const handleMinScroll = useCallback(() => {
     if (carouselMinRef.current) {
-      const el = carouselMinRef.current;
-      const scrolled = el.scrollLeft > 0;
-      // const nearEnd = el.scrollLeft >= (el.scrollWidth - el.clientWidth - 670);
-
-      setIsScrolledMin(scrolled); // margin-left ВСЕГДА при скролле
-      // setHasMarginRightMin(scrolled && !nearEnd);     // margin-right ТОЛЬКО не в конце
+      const scrolled = carouselMinRef.current.scrollLeft > 0;
+      setIsScrolledMin(scrolled);
     }
   }, []);
 
@@ -254,211 +224,233 @@ function App() {
   }, [handleMainScroll, handleMinScroll]);
 
   return (
-    <div style={{ width: "87%" }} className={styles.app}>
-      {" "}
-      <div className={styles.header}>
-        <div className={styles.buttonBar} onClick={toggleSidebar}>
-          <Menu size={17} />
-        </div>
-        <div className={styles.buttonBar}>
-          <ShoppingCart size={17} onClick={() => navigate("/cart")} />
-          {cartCount > 0 && (
-            <span className={styles.cartBadge}>{cartCount}</span>
-          )}
-        </div>
-      </div>
-      <h1>Products</h1>
-      <div className={styles.inputContainer}>
-        <Search
-          color="gray"
-          size={17}
-          style={{
-            paddingLeft: "10px",
-          }}
-        />
-        <input type="text" />
-      </div>
-      <div
-        ref={carouselRef}
-        className={`${styles.productsCarousel} 
-             ${isScrolledMain ? styles.scrolledLeft : ""} 
-             ${hasMarginRightMain ? styles.scrolledRight : ""}`}
-      >
-        {" "}
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className={styles.productCard}
-            onClick={() => navigate(`/product/${product.id}`)}
-            style={{
-              backgroundImage: `linear-gradient(150deg, ${product.gradientFrom}, ${product.gradientTo})`,
-            }}
+    <div className={styles.app}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <button className={styles.headerButton} onClick={toggleSidebar}>
+            <Menu size={20} />
+          </button>
+          <button
+            className={styles.headerButton}
+            onClick={() => navigate("/cart")}
           >
-            <div className={styles.productTextInfo}>
-              <h3 className={styles.productTitle}>{product.name}</h3>
-              <p className={styles.productDescription}>{product.description}</p>
+            <ShoppingCart size={20} />
+            {cartCount > 0 && (
+              <span className={styles.cartBadge}>{cartCount}</span>
+            )}
+          </button>
+        </div>
 
-              <p className={styles.productPrice}>${product.price}</p>
-              {/* <div classNamюбьe={styles.productItems}> */}
-              <p className={styles.productWeight}>{product.weight}</p>
-              <ShoppingCart size={15} className={styles.cartTop} />
-              {/* </div> */}
-            </div>
+        <h1 className={styles.pageTitle}>Products</h1>
 
-            <img
-              src={product.image}
-              alt={product.name}
-              className={styles.productImage}
-            />
-          </div>
-        ))}
-      </div>
-      <h2>Special price</h2>
-      <div
-        ref={carouselMinRef}
-        className={`${styles.productsCarouselMin} 
-             ${isScrolledMin ? styles.scrolledLeftMin : ""} 
-             ${hasMarginRightMin ? styles.scrolledRightMin : ""}`}
-      >
-        {" "}
-        {productsMin.map((product) => (
+        <div className={styles.searchContainer}>
+          <Search className={styles.searchIcon} size={18} />
+          <input
+            type="text"
+            placeholder="Search products..."
+            className={styles.searchInput}
+          />
+        </div>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Featured Products</h2>
           <div
-            key={product.id}
-            onClick={() => navigate(`/productmin/${product.id}`)}
-            className={styles.productCardMin}
+            ref={carouselRef}
+            className={`${styles.carousel} ${
+              isScrolledMain ? styles.scrolled : ""
+            }`}
           >
-            <div className={styles.productTextInfoMin}>
-              <h3 className={styles.productTitleMin}>{product.name}</h3>
-
-              <p>${product.price}</p>
-            </div>
-
-            <img
-              src={product.image}
-              alt={product.name}
-              className={styles.productImageMin}
-            />
-            <ShoppingCart size={15} className={styles.cart} color="white" />
-          </div>
-        ))}
-      </div>
-      <h2>Categories</h2>
-      <div className={styles.productsCarouselMin}>
-        <div className={styles.categoryCardMin}>
-          <Dog />
-        </div>
-        <div className={styles.categoryCardMin}>
-          <Cat />
-        </div>{" "}
-        <div className={styles.categoryCardMin}>
-          <Rabbit />
-        </div>{" "}
-        <div className={styles.categoryCardMin}>
-          <Fish />
-        </div>
-        <div className={styles.categoryCardMin}>
-          <Bird />
-        </div>
-        <div className={styles.categoryCardMin}>
-          <Snail />
-        </div>
-      </div>
-      <div className={styles.productsAll}>
-        {productsMin.map((product) => (
-          <div
-            key={product.id}
-            onClick={() => navigate(`/productmin/${product.id}`)}
-            className={styles.productCardMin}
-            style={{ maxWidth: "119px", minWidth: "119px" }}
-          >
-            <div className={styles.productTextInfoMin}>
-              <h3 className={styles.productTitleMin}>{product.name}</h3>
-
-              <p>${product.price}</p>
-            </div>
-
-            <img
-              src={product.image}
-              alt={product.name}
-              className={styles.productImageAll}
-            />
-            <ShoppingCart size={15} className={styles.cart} color="white" />
-          </div>
-        ))}
-      </div>
-      <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ""}`}>
-        <div
-          style={{
-            width: "68%",
-            paddingTop: "100px",
-            paddingLeft: "17px",
-            minWidth: "198px",
-          }}
-        >
-          <div className={styles.panelClose} onClick={toggleSidebar}>
-            <PanelRightOpen size="25" />
-          </div>
-
-          <div className={styles.infoButton} style={{ paddingBottom: "40px" }}>
-            <CircleUserRound width="40px" height="40px" />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <p style={{ margin: "0" }}>Dobrynya Nkitich</p>
+            {products.map((product) => (
               <div
+                key={product.id}
+                className={styles.productCard}
+                onClick={() => navigate(`/product/${product.id}`)}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
+                  backgroundImage: `linear-gradient(150deg, ${product.gradientFrom}, ${product.gradientTo})`,
                 }}
               >
-                <Circle fill="#99ff99 " size="12px" />
-                <p
-                  style={{ margin: "0", fontSize: "14px", paddingLeft: "10px" }}
-                >
-                  Active Now
-                </p>
+                <div className={styles.productInfo}>
+                  <h3 className={styles.productTitle}>{product.name}</h3>
+                  <p className={styles.productDescription}>
+                    {product.description}
+                  </p>
+                  <div className={styles.productFooter}>
+                    <div>
+                      <p className={styles.productPrice}>${product.price}</p>
+                      <p className={styles.productWeight}>{product.weight}</p>
+                    </div>
+                    <button className={styles.addToCartIcon}>
+                      <ShoppingCart size={16} />
+                    </button>
+                  </div>
+                </div>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.productImage}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Special Offers</h2>
+          <div
+            ref={carouselMinRef}
+            className={`${styles.carouselMin} ${
+              isScrolledMin ? styles.scrolled : ""
+            }`}
+          >
+            {productsMin.map((product) => (
+              <div
+                key={product.id}
+                onClick={() => navigate(`/productmin/${product.id}`)}
+                className={styles.productCardMin}
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.productImageMin}
+                />
+                <div className={styles.productInfoMin}>
+                  <h3 className={styles.productTitleMin}>{product.name}</h3>
+                  <p className={styles.productPriceMin}>${product.price}</p>
+                </div>
+                <button className={styles.addToCartIconMin}>
+                  <ShoppingCart size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Categories</h2>
+          <div className={styles.categoriesGrid}>
+            <button className={styles.categoryCard}>
+              <Dog size={28} strokeWidth={1.5} />
+              <span>Dogs</span>
+            </button>
+            <button className={styles.categoryCard}>
+              <Cat size={28} strokeWidth={1.5} />
+              <span>Cats</span>
+            </button>
+            <button className={styles.categoryCard}>
+              <Rabbit size={28} strokeWidth={1.5} />
+              <span>Rabbits</span>
+            </button>
+            <button className={styles.categoryCard}>
+              <Fish size={28} strokeWidth={1.5} />
+              <span>Fish</span>
+            </button>
+            <button className={styles.categoryCard}>
+              <Bird size={28} strokeWidth={1.5} />
+              <span>Birds</span>
+            </button>
+            <button className={styles.categoryCard}>
+              <Snail size={28} strokeWidth={1.5} />
+              <span>Others</span>
+            </button>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>All Products</h2>
+          <div className={styles.productsGrid}>
+            {productsMin.map((product) => (
+              <div
+                key={product.id}
+                onClick={() => navigate(`/productmin/${product.id}`)}
+                className={styles.productCardGrid}
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.productImageGrid}
+                />
+                <div className={styles.productInfoGrid}>
+                  <h3 className={styles.productTitleGrid}>{product.name}</h3>
+                  <p className={styles.productPriceGrid}>${product.price}</p>
+                </div>
+                <button className={styles.addToCartIconGrid}>
+                  <ShoppingCart size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ""}`}>
+        <button className={styles.closeSidebar} onClick={toggleSidebar}>
+          <PanelRightClose size={24} />
+        </button>
+
+        <div className={styles.sidebarContent}>
+          <div className={styles.userProfile}>
+            <CircleUserRound size={48} strokeWidth={1.5} />
+            <div className={styles.userInfo}>
+              <p className={styles.userName}>Dobrynya Nikitich</p>
+              <div className={styles.userStatus}>
+                <Circle size={10} fill="#10b981" stroke="none" />
+                <span>Active Now</span>
               </div>
             </div>
           </div>
-          <div style={{ width: "60%" }}>
-            <div
-              className={styles.infoButtonLI}
-              onClick={() => navigate("/cart")}
+
+          <nav className={styles.sidebarNav}>
+            <button
+              className={styles.navItem}
+              onClick={() => {
+                navigate("/cart");
+                toggleSidebar();
+              }}
             >
-              <ShoppingCart />
-              <p>My Cart</p>
-            </div>
-            <div
-              className={styles.infoButtonLI}
-              onClick={() => navigate("/wishlist")}
+              <ShoppingCart size={22} strokeWidth={1.5} />
+              <span>My Cart</span>
+            </button>
+            <button
+              className={styles.navItem}
+              onClick={() => {
+                navigate("/wishlist");
+                toggleSidebar();
+              }}
             >
-              <Heart />
-              <p>Wish List</p>
-            </div>
-            <div
-              className={styles.infoButtonLI}
-              onClick={() => navigate("/orders")}
+              <Heart size={22} strokeWidth={1.5} />
+              <span>Wish List</span>
+            </button>
+            <button
+              className={styles.navItem}
+              onClick={() => {
+                navigate("/orders");
+                toggleSidebar();
+              }}
             >
-              <ListOrdered />
-              <p>My Order</p>
-            </div>
-            <div className={styles.infoButtonLI}>
-              <Ticket />
-              <p>Vouchar</p>
-            </div>
-            <div className={styles.infoButtonLI}>
-              <MessageCircleQuestionMark />
-              <p>Help</p>
-            </div>
-            <div className={styles.infoButtonLI}>
-              <Settings />
-              <p>Settings</p>
-            </div>
-          </div>
+              <ListOrdered size={22} strokeWidth={1.5} />
+              <span>My Orders</span>
+            </button>
+            <button className={styles.navItem}>
+              <Ticket size={22} strokeWidth={1.5} />
+              <span>Vouchers</span>
+            </button>
+            <button className={styles.navItem}>
+              <MessageCircleQuestion size={22} strokeWidth={1.5} />
+              <span>Help</span>
+            </button>
+            <button className={styles.navItem}>
+              <Settings size={22} strokeWidth={1.5} />
+              <span>Settings</span>
+            </button>
+          </nav>
         </div>
-        <div className={styles.LogOut}>
-          <LogOut />
-          <p>Sign Out </p>
-        </div>
+
+        <button className={styles.signOutButton}>
+          <LogOut size={22} strokeWidth={1.5} />
+          <span>Sign Out</span>
+        </button>
       </div>
+
       {isSidebarOpen && (
         <div className={styles.overlay} onClick={toggleSidebar} />
       )}
