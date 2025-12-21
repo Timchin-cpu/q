@@ -15,9 +15,6 @@ body {
   color: #213547 !important;
 }
 
-.productsCarousel.scrolled {
-  margin-left: -20% !important;
-}
 .productsCarousel::-webkit-scrollbar {
   display: none;
 }
@@ -353,9 +350,6 @@ h2 {
   position: absolute;
   top: 18px;
   right: 18px;
-}
-.productsCarousel.scrolledLeft {
-  margin-left: -20% !important;
 }
 
 /* МИНИ КАРУСЕЛЬ */
