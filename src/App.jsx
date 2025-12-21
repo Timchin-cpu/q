@@ -423,7 +423,10 @@ function App() {
               <ShoppingCart />
               <p>My Cart</p>
             </div>
-            <div className={styles.infoButtonLI}>
+            <div
+              className={styles.infoButtonLI}
+              onClick={() => navigate("/wishlist")}
+            >
               <Heart />
               <p>Wish List</p>
             </div>
