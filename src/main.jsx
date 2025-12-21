@@ -9,6 +9,8 @@ import { CartProvider } from "./contexts/CartContext";
 import Cart from "./components/Cart/Cart.jsx";
 import { WishlistProvider } from "./contexts/WishlistContext";
 import Wishlist from "./components/Wishlist/Wishlist";
+import Orders from "./components/Orders/Orders";
+
 const products = [
   {
     id: 1,
@@ -191,6 +193,7 @@ createRoot(document.getElementById("root")).render(
               path="/product/:id"
               element={<ProductPage products={products} />}
             />
+            <Route path="/orders" element={<Orders />} />
             <Route
               path="/productmin/:id"
               element={<ProductPageMin products={productsMin} />}
