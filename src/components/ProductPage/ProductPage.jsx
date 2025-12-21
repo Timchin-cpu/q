@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useCart } from "../../contexts/CartContext";
 import { useState, useEffect } from "react";
+import { useWishlist } from "../../contexts/WishlistContext";
 
 function ProductPage({ products }) {
   const { id } = useParams();
@@ -27,7 +28,15 @@ function ProductPage({ products }) {
   const cartItem = cartItems.find((item) => item.id === product.id);
   const currentQuantity = cartItem ? cartItem.quantity : 0;
   const [isInCart, setIsInCart] = useState(currentQuantity > 0);
+  const { wishlistItems, dispatch: wishlistDispatch } = useWishlist();
+  const isInWishlist = wishlistItems.some((item) => item.id === product.id);
 
+  const handleToggleWishlist = () => {
+    wishlistDispatch({
+      type: "TOGGLE_WISHLIST",
+      payload: product,
+    });
+  };
   // Синхронизируем состояние с корзиной
   useEffect(() => {
     setIsInCart(currentQuantity > 0);
@@ -125,8 +134,11 @@ function ProductPage({ products }) {
           <h3 style={{ marginBottom: "0" }}>Product Description</h3>
           <p style={{ marginTop: "5px" }}>{product.description}</p>
           <div className={styles.addButtons}>
-            <div className={styles.addButtonLike}>
-              <Heart fill="black" />
+            <div
+              className={styles.addButtonLike}
+              onClick={handleToggleWishlist}
+            >
+              <Heart fill={isInWishlist ? "black" : "none"} />
             </div>
 
             {isInCart ? (
@@ -135,14 +147,14 @@ function ProductPage({ products }) {
                   className={styles.quantityButton}
                   onClick={handleDecrement}
                 >
-                  <Minus size={18}/>
+                  <Minus size={18} />
                 </button>
                 <span className={styles.quantity}>{currentQuantity}</span>
                 <button
                   className={styles.quantityButton}
                   onClick={handleIncrement}
                 >
-                  <Plus size={18}/>
+                  <Plus size={18} />
                 </button>
               </div>
             ) : (
@@ -157,5 +169,3 @@ function ProductPage({ products }) {
   );
 }
 export default ProductPage;
-
-

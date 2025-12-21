@@ -7,7 +7,8 @@ import ProductPage from "./components/ProductPage/ProductPage";
 import ProductPageMin from "./components/ProductPageMin/ProductPageMin";
 import { CartProvider } from "./contexts/CartContext";
 import Cart from "./components/Cart/Cart.jsx";
-
+import { WishlistProvider } from "./contexts/WishlistContext";
+import Wishlist from "./components/Wishlist/Wishlist";
 const products = [
   {
     id: 1,
@@ -182,22 +183,23 @@ const categories = [
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <CartProvider>
-        {" "}
-        {/* ← ДОБАВЬ */}
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route
-            path="/product/:id"
-            element={<ProductPage products={products} />}
-          />
-          <Route
-            path="/productmin/:id"
-            element={<ProductPageMin products={productsMin} />}
-          />
-          <Route path="/cart" element={<Cart />} /> {/* ← ДОБАВЬ */}
-        </Routes>
-      </CartProvider>
+      <WishlistProvider>
+        <CartProvider>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route
+              path="/product/:id"
+              element={<ProductPage products={products} />}
+            />
+            <Route
+              path="/productmin/:id"
+              element={<ProductPageMin products={productsMin} />}
+            />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/wishlist" element={<Wishlist />} /> {/* НОВЫЙ РОУТ */}
+          </Routes>
+        </CartProvider>
+      </WishlistProvider>
     </BrowserRouter>
   </StrictMode>
 );
