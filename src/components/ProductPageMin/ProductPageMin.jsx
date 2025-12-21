@@ -83,6 +83,7 @@ function ProductPageMin({ products }) {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        color: "black",
       }}
     >
       <div className={styles.header}>
