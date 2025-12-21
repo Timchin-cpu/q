@@ -47,7 +47,7 @@ function Wishlist() {
             )}
           </div>
         </div>
-        <div className={styles.emptyContent}>
+        <div className={styles.emptyContent} style={{ color: "black" }}>
           <Heart size={80} strokeWidth={1.5} color="#d1d5db" />
           <h2 className={styles.emptyTitle}>Your Wishlist is Empty</h2>
           <p className={styles.emptyText}>
