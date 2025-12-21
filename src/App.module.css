@@ -228,7 +228,7 @@
 .addToCartIcon {
   position: absolute;
   right: 16px;
-  bottom: 18px;
+  bottom: 13px;
   background: white;
   border: none;
   border-radius: 19px;
@@ -240,6 +240,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   z-index: 3;
+  color: black;
 }
 
 .addToCartIcon:active {
