@@ -32,11 +32,13 @@ function Wishlist() {
   if (wishlistItems.length === 0) {
     return (
       <div className={styles.emptyContainer}>
-        <div className={styles.header}>
+        <div className={styles.header} style={{ color: "black" }}>
           <div className={styles.headerButton} onClick={() => navigate(-1)}>
             <ArrowLeft size={20} />
           </div>
-          <h1 className={styles.title}>Wishlist</h1>
+          <h1 className={styles.title} style={{ color: "black" }}>
+            Wishlist
+          </h1>
           <div
             className={styles.headerButton}
             onClick={() => navigate("/cart")}
