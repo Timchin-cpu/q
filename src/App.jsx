@@ -419,7 +419,10 @@ function App() {
             </div>
           </div>
           <div style={{ width: "60%" }}>
-            <div className={styles.infoButtonLI}>
+            <div
+              className={styles.infoButtonLI}
+              onClick={() => navigate("/cart")}
+            >
               <ShoppingCart />
               <p>My Cart</p>
             </div>
