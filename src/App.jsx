@@ -257,11 +257,7 @@ function App() {
     <div style={{ width: "87%" }} className={styles.app}>
       {" "}
       <div className={styles.header}>
-        <div
-          className={styles.buttonBar}
-          onClick={toggleSidebar}
-          style={{ cursor: "pointer" }}
-        >
+        <div className={styles.buttonBar} onClick={toggleSidebar}>
           <Menu size={17} />
         </div>
         <div className={styles.buttonBar}>
