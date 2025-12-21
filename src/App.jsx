@@ -275,13 +275,8 @@ function App() {
                     {product.description}
                   </p>
                   <div className={styles.productFooter}>
-                    <div>
-                      <p className={styles.productPrice}>${product.price}</p>
-                      <p className={styles.productWeight}>{product.weight}</p>
-                    </div>
-                    <button className={styles.addToCartIcon}>
-                      <ShoppingCart size={16} />
-                    </button>
+                    <p className={styles.productPrice}>${product.price}</p>
+                    <p className={styles.productWeight}>{product.weight}</p>
                   </div>
                 </div>
                 <img
@@ -289,6 +284,9 @@ function App() {
                   alt={product.name}
                   className={styles.productImage}
                 />
+                <button className={styles.addToCartIcon}>
+                  <ShoppingCart size={15} />
+                </button>
               </div>
             ))}
           </div>
