@@ -227,7 +227,11 @@ function App() {
     <div className={styles.app}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <button className={styles.headerButton} onClick={toggleSidebar}>
+          <button
+            className={styles.headerButton}
+            onClick={toggleSidebar}
+            color="black"
+          >
             <Menu size={20} />
           </button>
           <button
