@@ -95,7 +95,7 @@ input {
   display: flex;
   overflow-x: auto;
   gap: 20px;
-  padding: 20px 0;
+  padding: 25px 0;
   scrollbar-width: none;
   min-width: 93.5vw;
   margin-left: -7.3%;
