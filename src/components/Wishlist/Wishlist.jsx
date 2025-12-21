@@ -63,11 +63,13 @@ function Wishlist() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
+      <div className={styles.header} style={{ color: "black" }}>
         <div className={styles.headerButton} onClick={() => navigate(-1)}>
           <ArrowLeft size={20} />
         </div>
-        <h1 className={styles.title}>Wishlist</h1>
+        <h1 className={styles.title} style={{ color: "black" }}>
+          Wishlist
+        </h1>
         <div className={styles.headerButton} onClick={() => navigate("/cart")}>
           <ShoppingCart size={20} />
           {cartCount > 0 && (

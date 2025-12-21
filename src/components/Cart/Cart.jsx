@@ -45,7 +45,7 @@ function Cart() {
         <h3>My Cart ({cartItems.length})</h3>
       </div>
 
-      <div className={styles.cartItems}>
+      <div className={styles.cartItems} style={{ color: "black" }}>
         {cartItems.map((item) => (
           <div key={item.id} className={styles.cartItem}>
             <img

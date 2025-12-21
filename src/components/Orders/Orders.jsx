@@ -123,11 +123,13 @@ function Orders() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
+      <div className={styles.header} style={{ color: "black" }}>
         <div className={styles.headerButton} onClick={() => navigate(-1)}>
           <ArrowLeft size={20} />
         </div>
-        <h1 className={styles.title}>My Orders</h1>
+        <h1 className={styles.title} style={{ color: "black" }}>
+          My Orders
+        </h1>
         <div className={styles.headerButton} onClick={() => navigate("/cart")}>
           <ShoppingCart size={20} />
           {cartCount > 0 && (
