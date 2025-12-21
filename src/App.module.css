@@ -120,7 +120,7 @@ input {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 .productCard:hover {
-  transform: scale(1.2);
+  transform: scale(1.02);
 }
 /* заголовок в несколько строк */
 .productTitle {
