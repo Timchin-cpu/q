@@ -98,12 +98,15 @@ input {
   padding: 20px 0;
   scrollbar-width: none;
   min-width: 93.5vw;
-  margin-left: 0;
+  /* margin-left: 0;
   margin-right: 0;
   transition: margin-left 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    margin-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    margin-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
   scroll-behavior: smooth; /* Добавьте для плавного скролла */
   margin-right: -8% !important;
+  --scroll-offset: 0%;
+  margin-left: var(--scroll-offset);
+  transition: margin-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .productsCarousel::-webkit-scrollbar {
