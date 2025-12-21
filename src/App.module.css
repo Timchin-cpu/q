@@ -48,6 +48,7 @@
   position: relative;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  color: black;
 }
 
 .headerButton:active {
