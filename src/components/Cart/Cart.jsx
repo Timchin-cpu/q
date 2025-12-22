@@ -1,13 +1,14 @@
 // src/components/Cart/Cart.jsx (замени черновик)
-
-import styles from "./Cart.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
+import styles from "./Cart.module.css";
 import { ShoppingCart, Trash2, Minus, Plus, ArrowLeft } from "lucide-react";
+
 function Cart() {
   const { cartItems, dispatch } = useCart();
   const navigate = useNavigate();
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -24,11 +25,11 @@ function Cart() {
 
   if (cartItems.length === 0) {
     return (
-      <div style={styles.emptyCart}>
-        <ShoppingCart size={80} strokeWidth={1.5} style={styles.emptyIcon} />
-        <h2 style={styles.emptyTitle}>Your cart is empty</h2>
-        <p style={styles.emptyText}>Add some products to get started</p>
-        <button style={styles.continueButton} onClick={() => navigate("/")}>
+      <div className={styles.emptyCart}>
+        <ShoppingCart size={64} className={styles.emptyIcon} />
+        <h2>Your cart is empty</h2>
+        <p>Add some products to get started</p>
+        <button className={styles.continueButton} onClick={() => navigate("/")}>
           Continue Shopping
         </button>
       </div>
@@ -36,63 +37,70 @@ function Cart() {
   }
 
   return (
-    <div style={styles.cartPage}>
-      <div style={styles.header}>
-        <button style={styles.backButton} onClick={() => navigate(-1)}>
+    <div className={styles.cartPage}>
+      <div className={styles.header}>
+        <button className={styles.backButton} onClick={() => navigate(-1)}>
           <ArrowLeft size={20} />
         </button>
-        <h1 style={styles.title}>My Cart</h1>
-        <div style={{ width: 44 }}></div>
+        <h3>My Cart ({cartItems.length})</h3>
       </div>
 
-      <div style={styles.cartItems}>
+      <div className={styles.cartItems} style={{ color: "black" }}>
         {cartItems.map((item) => (
-          <div key={item.id} style={styles.cartItem}>
-            <img src={item.image} alt={item.name} style={styles.itemImage} />
-            <div style={styles.itemInfo}>
-              <h3 style={styles.itemName}>{item.name}</h3>
-              <p style={styles.itemPrice}>${item.price.toFixed(2)}</p>
+          <div key={item.id} className={styles.cartItem}>
+            <img
+              src={item.image}
+              alt={item.name}
+              className={styles.itemImage}
+            />
+            <div className={styles.itemInfo}>
+              <h3 className={styles.itemName}>{item.name}</h3>
+              <p className={styles.itemPrice}>
+                ${(item.price * item.quantity).toFixed(2)}
+              </p>
             </div>
-            <div style={styles.quantityControls}>
+            <div className={styles.quantityControls}>
               <button
                 onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                style={styles.quantityButton}
+                className={styles.quantityButton}
               >
                 <Plus size={16} />
               </button>
-              <span style={styles.quantity}>{item.quantity}</span>
+              <span className={styles.quantity}>{item.quantity}</span>
               <button
                 onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                style={styles.quantityButton}
+                className={styles.quantityButton}
               >
                 <Minus size={16} />
               </button>
             </div>
             <button
-              style={styles.removeButton}
+              className={styles.removeButton}
               onClick={() =>
                 dispatch({ type: "REMOVE_FROM_CART", payload: item.id })
               }
             >
-              <Trash2 size={18} />
+              <Trash2 size={20} />
             </button>
           </div>
         ))}
       </div>
 
-      <div style={styles.footer}>
-        <div style={styles.totalSection}>
-          <div style={styles.totalRow}>
-            <span style={styles.totalLabel}>
-              Subtotal (
-              {cartItems.reduce((sum, item) => sum + item.quantity, 0)} items)
-            </span>
-            <span style={styles.totalPrice}>${totalPrice.toFixed(2)}</span>
-          </div>
+      <div className={styles.cartFooter}>
+        <div className={styles.total}>
+          <span>Total:</span>
+          <span className={styles.totalPrice}>${totalPrice.toFixed(2)}</span>
         </div>
-        <button style={styles.checkoutButton}>Proceed to Checkout</button>
+        <button className={styles.checkoutButton}>Proceed to Checkout</button>
+        <button
+          className={styles.clearButton}
+          onClick={() => dispatch({ type: "CLEAR_CART" })}
+        >
+          Clear Cart
+        </button>
       </div>
     </div>
   );
 }
+
 export default Cart;
