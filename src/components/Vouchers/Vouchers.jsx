@@ -84,87 +84,99 @@ function Vouchers() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.headerButton} onClick={() => navigate(-1)}>
-          <ArrowLeft size={20} />
-        </div>
-        <h1 className={styles.title}>My Vouchers</h1>
-        <div className={styles.headerButton} onClick={() => navigate("/cart")}>
-          <ShoppingCart size={20} />
-          {cartCount > 0 && (
-            <span className={styles.cartBadge}>{cartCount}</span>
-          )}
-        </div>
-      </div>
-
-      <div className={styles.vouchersContainer}>
-        {fakeVouchers.map((voucher) => (
-          <div
-            key={voucher.id}
-            className={`${styles.voucherCard} ${
-              voucher.used ? styles.usedVoucher : ""
-            }`}
-            style={{
-              background: voucher.used
-                ? "#f3f4f6"
-                : `linear-gradient(135deg, ${voucher.color}20, ${voucher.color}10)`,
-            }}
-          >
-            <div className={styles.voucherHeader}>
-              <div
-                className={styles.discountBadge}
-                style={{
-                  background: voucher.used ? "#9ca3af" : voucher.color,
-                }}
-              >
-                <Percent size={16} strokeWidth={2.5} />
-                <span>{voucher.discount}</span>
-              </div>
-              {voucher.used && <span className={styles.usedLabel}>Used</span>}
-            </div>
-
-            <div className={styles.voucherContent}>
-              <h3 className={styles.voucherTitle}>{voucher.title}</h3>
-              <p className={styles.voucherDescription}>{voucher.description}</p>
-
-              <div className={styles.voucherDetails}>
-                <div className={styles.detailItem}>
-                  <Calendar size={14} />
-                  <span>Valid until {voucher.expiryDate}</span>
-                </div>
-                <div className={styles.detailItem}>
-                  <Ticket size={14} />
-                  <span>Min. purchase: ${voucher.minPurchase}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.voucherFooter}>
-              <div className={styles.codeSection}>
-                <span className={styles.codeLabel}>Code:</span>
-                <span className={styles.code}>{voucher.code}</span>
-              </div>
-              <button
-                className={styles.copyButton}
-                onClick={() => handleCopyCode(voucher.code, voucher.id)}
-                disabled={voucher.used}
-              >
-                {copiedId === voucher.id ? (
-                  <>
-                    <Check size={16} />
-                    <span>Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy size={16} />
-                    <span>Copy</span>
-                  </>
-                )}
-              </button>
-            </div>
+    <div
+      style={{
+        background: "linear-gradient(to bottom, #f9fafb, #fff)",
+        width: "100vw",
+      }}
+    >
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <div className={styles.headerButton} onClick={() => navigate(-1)}>
+            <ArrowLeft size={20} />
           </div>
-        ))}
+          <h1 className={styles.title}>My Vouchers</h1>
+          <div
+            className={styles.headerButton}
+            onClick={() => navigate("/cart")}
+          >
+            <ShoppingCart size={20} />
+            {cartCount > 0 && (
+              <span className={styles.cartBadge}>{cartCount}</span>
+            )}
+          </div>
+        </div>
+
+        <div className={styles.vouchersContainer}>
+          {fakeVouchers.map((voucher) => (
+            <div
+              key={voucher.id}
+              className={`${styles.voucherCard} ${
+                voucher.used ? styles.usedVoucher : ""
+              }`}
+              style={{
+                background: voucher.used
+                  ? "#f3f4f6"
+                  : `linear-gradient(135deg, ${voucher.color}20, ${voucher.color}10)`,
+              }}
+            >
+              <div className={styles.voucherHeader}>
+                <div
+                  className={styles.discountBadge}
+                  style={{
+                    background: voucher.used ? "#9ca3af" : voucher.color,
+                  }}
+                >
+                  <Percent size={16} strokeWidth={2.5} />
+                  <span>{voucher.discount}</span>
+                </div>
+                {voucher.used && <span className={styles.usedLabel}>Used</span>}
+              </div>
+
+              <div className={styles.voucherContent}>
+                <h3 className={styles.voucherTitle}>{voucher.title}</h3>
+                <p className={styles.voucherDescription}>
+                  {voucher.description}
+                </p>
+
+                <div className={styles.voucherDetails}>
+                  <div className={styles.detailItem}>
+                    <Calendar size={14} />
+                    <span>Valid until {voucher.expiryDate}</span>
+                  </div>
+                  <div className={styles.detailItem}>
+                    <Ticket size={14} />
+                    <span>Min. purchase: ${voucher.minPurchase}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.voucherFooter}>
+                <div className={styles.codeSection}>
+                  <span className={styles.codeLabel}>Code:</span>
+                  <span className={styles.code}>{voucher.code}</span>
+                </div>
+                <button
+                  className={styles.copyButton}
+                  onClick={() => handleCopyCode(voucher.code, voucher.id)}
+                  disabled={voucher.used}
+                >
+                  {copiedId === voucher.id ? (
+                    <>
+                      <Check size={16} />
+                      <span>Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={16} />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
