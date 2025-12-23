@@ -432,7 +432,13 @@ function App() {
               <ListOrdered size={22} strokeWidth={1.5} />
               <span>My Orders</span>
             </button>
-            <button className={styles.navItem}>
+            <button
+              className={styles.navItem}
+              onClick={() => {
+                navigate("/vouchers");
+                toggleSidebar();
+              }}
+            >
               <Ticket size={22} strokeWidth={1.5} />
               <span>Vouchers</span>
             </button>
