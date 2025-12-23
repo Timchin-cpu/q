@@ -10,6 +10,7 @@ import Cart from "./components/Cart/Cart.jsx";
 import { WishlistProvider } from "./contexts/WishlistContext";
 import Wishlist from "./components/Wishlist/Wishlist";
 import Orders from "./components/Orders/Orders";
+import Vouchers from "./components/Vouchers/Vouchers";
 
 const products = [
   {
@@ -199,6 +200,7 @@ createRoot(document.getElementById("root")).render(
               element={<ProductPageMin products={productsMin} />}
             />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/vouchers" element={<Vouchers />} />
             <Route path="/wishlist" element={<Wishlist />} /> {/* НОВЫЙ РОУТ */}
           </Routes>
         </CartProvider>
