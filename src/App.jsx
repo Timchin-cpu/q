@@ -442,7 +442,13 @@ function App() {
               <Ticket size={22} strokeWidth={1.5} />
               <span>Vouchers</span>
             </button>
-            <button className={styles.navItem}>
+            <button
+              className={styles.navItem}
+              onClick={() => {
+                navigate("/help");
+                toggleSidebar();
+              }}
+            >
               <MessageCircleQuestion size={22} strokeWidth={1.5} />
               <span>Help</span>
             </button>

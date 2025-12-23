@@ -94,6 +94,7 @@
 .searchContainer {
   position: relative;
   margin-bottom: 28px;
+  max-width: 285px;
 }
 
 .searchIcon {
