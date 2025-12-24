@@ -1,0 +1,286 @@
+.container {
+  padding: 20px;
+  max-width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f9fafb 0%, #ffffff 100%);
+  padding-bottom: 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.headerButton {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #000;
+}
+
+.headerButton:active {
+  transform: scale(0.92);
+  background: rgba(255, 255, 255, 1);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #1f2937;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #000;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  border: 2px solid white;
+}
+
+/* PROFILE SECTION */
+.profileSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.profileAvatar {
+  width: 70px;
+  height: 70px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.profileInfo {
+  flex: 1;
+}
+
+.profileName {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: #1f2937;
+}
+
+.profileEmail {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* SECTIONS */
+.section {
+  margin-bottom: 28px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: #1f2937;
+  padding-left: 4px;
+  letter-spacing: -0.2px;
+}
+
+/* SETTINGS LIST */
+.settingsList {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.settingItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.settingItem:last-child {
+  border-bottom: none;
+}
+
+.settingItem:active {
+  background: #f9fafb;
+}
+
+.settingIcon {
+  width: 40px;
+  height: 40px;
+  background: #f3f4f6;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f2937;
+  flex-shrink: 0;
+}
+
+.settingContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.settingTitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  color: #1f2937;
+}
+
+.settingDescription {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.chevron {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+/* TOGGLE SWITCH */
+.toggle {
+  width: 50px;
+  height: 28px;
+  background: #e5e7eb;
+  border-radius: 14px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggleActive {
+  background: #000;
+}
+
+.toggleCircle {
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggleActive .toggleCircle {
+  left: 25px;
+}
+
+/* LOGOUT SECTION */
+.logoutSection {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.logoutButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background: #fee;
+  color: #dc2626;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+}
+
+.logoutButton:active {
+  transform: scale(0.98);
+  background: #fecaca;
+}
+
+.version {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .profileSection {
+    padding: 16px;
+  }
+
+  .profileAvatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .profileName {
+    font-size: 18px;
+  }
+
+  .settingItem {
+    padding: 14px;
+  }
+
+  .settingIcon {
+    width: 36px;
+    height: 36px;
+  }
+}

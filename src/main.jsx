@@ -12,6 +12,7 @@ import Wishlist from "./components/Wishlist/Wishlist";
 import Orders from "./components/Orders/Orders";
 import Vouchers from "./components/Vouchers/Vouchers";
 import Help from "./components/Help/Help";
+import Settings from "./components/Settings/Settings";
 const products = [
   {
     id: 1,
@@ -202,6 +203,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="/cart" element={<Cart />} />
             <Route path="/vouchers" element={<Vouchers />} />
             <Route path="/help" element={<Help />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="/wishlist" element={<Wishlist />} /> {/* НОВЫЙ РОУТ */}
           </Routes>
         </CartProvider>

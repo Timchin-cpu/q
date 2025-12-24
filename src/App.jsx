@@ -452,7 +452,13 @@ function App() {
               <MessageCircleQuestion size={22} strokeWidth={1.5} />
               <span>Help</span>
             </button>
-            <button className={styles.navItem}>
+            <button
+              className={styles.navItem}
+              onClick={() => {
+                navigate("/settings");
+                toggleSidebar();
+              }}
+            >
               <Settings size={22} strokeWidth={1.5} />
               <span>Settings</span>
             </button>
